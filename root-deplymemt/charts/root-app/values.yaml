@@ -5,14 +5,14 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  project: argo-cd
+  project: argoc
   source:
     repoURL: https://github.com/ajithshah/argo-cd.git
     path: init-deployment/charts/root-app/
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
-    namespace: argo-cd
+    namespace: default
   syncPolicy:
     automated:
       selfHeal: true
