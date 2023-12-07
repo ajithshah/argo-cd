@@ -5,7 +5,7 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  project: argoc
+  project: default
   source:
     repoURL: https://github.com/ajithshah/argo-cd.git
     path: init-deployment/charts/root-app/
