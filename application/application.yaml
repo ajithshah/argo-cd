@@ -6,7 +6,7 @@ metadata:
 spec:
   project: uat-m2p-visapay
   source:
-    repoURL: https://github.com/m2pfintech/uat-m2p-visapay-application-config.git
+    repoURL: https://github.com/ajithshah/argo-cd.git
     path: project-init-deployment
     targetRevision: master # The branch, tag, or commit to track
   destination:
@@ -17,4 +17,4 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
