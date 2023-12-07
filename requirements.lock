@@ -1,0 +1,6 @@
+dependencies:
+- name: argo-cd
+  repository: https://repo.m2pfintech.com/repository/helm
+  version: 5.51.5
+digest: sha256:d8751af91d108bd3db3c752e499c34cecc077fca6db2289fc810c12846aa6ba4
+generated: "2023-12-01T10:46:47.615868+05:30"
