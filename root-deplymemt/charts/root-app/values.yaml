@@ -7,7 +7,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/arthurk/argocd-example-install.git
+    repoURL: https://github.com/ajithshah/argo-cd.git
     path: init-deployment/charts/root-app/
     targetRevision: HEAD
   destination:
