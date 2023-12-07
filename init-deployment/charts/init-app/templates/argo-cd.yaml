@@ -8,7 +8,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/ajithshah/argo-cd.git
-    path: init-deployment/charts/root-app/
+    path: init-deployment/charts/argo-cd/
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
