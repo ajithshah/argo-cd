@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: init-app
+  name: root-app
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
     repoURL: https://github.com/ajithshah/argo-cd.git
-    path: init-deployment/charts/init-app/
+    path: root-deplymemt/charts/root-app/
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
