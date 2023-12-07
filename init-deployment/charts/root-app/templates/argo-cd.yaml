@@ -3,12 +3,12 @@ kind: Application
 metadata:
   name: argo-cd
   finalizers:
-    - resources-finalizer.argocd.argoproj.io
+  - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://github.com/ajithshah/argo-cd.git
-    path: init-deployment/charts/argo-cd
+    repoURL: https://github.com/arthurk/argocd-example-install.git
+    path: charts/argo-cd
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
