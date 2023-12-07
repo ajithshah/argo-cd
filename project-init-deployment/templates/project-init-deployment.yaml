@@ -1,0 +1,49 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata: 
+  name: '{{- .Values.env }}-{{- .Values.project }}-{{- .Values.main_product }}'
+  namespace: argocd
+  labels:
+    main-product: '{{- .Values.main_product }}'
+    project: '{{- .Values.env }}-{{- .Values.project }}-{{- .Values.main_product }}'
+spec:  
+  generators:
+  - list:
+      elements:
+        - name: argo-project
+          path: argo-project
+          targetRevision: master
+        {{- if .Values.cluster_apps.enabled }}
+        - name: cluster-apps
+          path: cluster-apps/applicationsets
+          targetRevision: master
+        {{- end }}
+        {{- range .Values.product }}
+        - name: {{ .name }}-apps
+          path: {{ .name }}-apps/applicationsets
+          targetRevision: master
+        {{- end }}
+  template:
+    metadata:
+      name: '{{- .Values.env }}-{{- .Values.project }}-{{- .Values.main_product }}-{{- .Values.name | default "{{name}}" }}'
+      labels:
+        main-product: '{{- .Values.main_product }}'
+        project: '{{- .Values.env }}-{{- .Values.project }}-{{- .Values.main_product }}'
+    spec:
+      {{- if  .Values.argo_project.enabled }}
+      project: 'default'
+      {{- else }}
+      project: '{{- .Values.env }}-{{- .Values.project }}-{{- .Values.main_product }}'
+      {{- end }}
+      source:
+        repoURL: https://github.com/m2pfintech/{{- .Values.env }}-{{- .Values.project }}-{{- .Values.main_product }}-application-config.git
+        targetRevision: '{{- .Values.targetRevision | default "{{targetRevision}}" }}'
+        path: '{{- .Values.path | default "{{path}}" }}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: argocd
+      syncPolicy:
+        automated: 
+          prune: true
+          selfHeal: true

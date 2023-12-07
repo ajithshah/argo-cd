@@ -1,0 +1,16 @@
+env: uat
+project: m2p
+main_product: visapay
+
+cluster_apps:
+  enabled: false
+
+argo_project:
+  enabled: false
+  
+product:
+- name: visapay
+- name: saas
+- name: cms
+- name: kyc
+
